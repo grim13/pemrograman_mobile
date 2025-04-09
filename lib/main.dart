@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pemrograman_mobile/components/header.dart';
 import 'package:pemrograman_mobile/components/menu.dart';
+import 'package:pemrograman_mobile/screens/home_screen.dart';
+import 'package:pemrograman_mobile/screens/payment_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +18,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Mobile Programming"),
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          centerTitle: true,
-        ),
-        body: Column(children: [HeaderWidget(), Menu()]),
-      ),
+      initialRoute: HomeScreen.routeName,
+      routes: {
+        HomeScreen.routeName: (ctx) => HomeScreen(),
+        PaymentScreen.routeName: (ctx) => PaymentScreen(),
+      },
     );
   }
 }
