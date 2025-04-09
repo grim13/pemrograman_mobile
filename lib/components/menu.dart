@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pemrograman_mobile/components/menuItem.dart';
+import 'package:pemrograman_mobile/screens/payment_screen.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -9,9 +10,9 @@ class Menu extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        MenuItem("Payment", "P"),
-        MenuItem("History", "H"),
-        MenuItem("Notif", "N"),
+        MenuItem("Payment", "P", PaymentScreen.routeName),
+        MenuItem("History", "H", PaymentScreen.routeName),
+        MenuItem("Notif", "N", PaymentScreen.routeName),
       ],
     );
   }
