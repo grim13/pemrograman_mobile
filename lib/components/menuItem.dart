@@ -22,8 +22,9 @@ class MenuItem extends StatelessWidget {
         ),
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(icon, style: TextStyle(fontSize: 40)),
+              Image.asset(icon, width: 50, height: 50),
               Text(title, style: TextStyle(fontSize: 15)),
             ],
           ),

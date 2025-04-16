@@ -11,9 +11,21 @@ class Menu extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        MenuItem("Payment", "P", PaymentScreen.routeName),
-        MenuItem("History", "H", PaymentScreen.routeName),
-        MenuItem("Profile", "PR", ProfileScreen.routeName),
+        MenuItem(
+          "Payment",
+          "assets/icons/payment.png",
+          PaymentScreen.routeName,
+        ),
+        MenuItem(
+          "History",
+          "assets/icons/history.png",
+          PaymentScreen.routeName,
+        ),
+        MenuItem(
+          "Profile",
+          "assets/icons/profile.png",
+          ProfileScreen.routeName,
+        ),
       ],
     );
   }
