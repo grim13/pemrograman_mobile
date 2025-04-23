@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  static String routeName = '/payment';
+  static String routeName = '/profile';
   const ProfileScreen({super.key});
 
   @override

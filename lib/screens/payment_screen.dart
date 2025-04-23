@@ -1,17 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:pemrograman_mobile/models/payment_model.dart';
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
+  PaymentScreen({super.key});
   static String routeName = '/payment';
-  const PaymentScreen({super.key});
 
+  List<PaymentModel> paymentList = [
+    PaymentModel(
+      id: 1,
+      nama: 'Buku Pemrograman Mobile',
+      tanggal: DateTime.parse("2023-10-01"),
+      jumlah: 100000,
+    ),
+    PaymentModel(
+      id: 2,
+      nama: 'Majalah Teknologi',
+      tanggal: DateTime.parse("2023-10-01"),
+      jumlah: 200000,
+    ),
+    PaymentModel(
+      id: 3,
+      nama: 'Koran Pagi',
+      tanggal: DateTime.parse("2023-10-01"),
+      jumlah: 200000,
+    ),
+  ];
+
+  @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Payment'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(child: Text('Payment Page')),
+      appBar: AppBar(title: const Text('Payment')),
+      body: Center(child: Text('Payment Screen')),
     );
   }
 }
