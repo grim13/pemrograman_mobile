@@ -24,6 +24,12 @@ class PaymentScreen extends StatefulWidget {
       tanggal: DateTime.parse("2023-10-01"),
       jumlah: 200000,
     ),
+    PaymentModel(
+      id: 4,
+      nama: 'Koran Pagi 2',
+      tanggal: DateTime.parse("2023-10-03"),
+      jumlah: 800000,
+    ),
   ];
 
   @override
@@ -35,7 +41,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Payment')),
-      body: Center(child: Text('Payment Screen')),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: widget.paymentList.length,
+              itemBuilder: (context, index) {
+                final payment = widget.paymentList[index];
+                return ListTile(
+                  title: Text(payment.nama),
+                  subtitle: Text('Tanggal: ${payment.tanggal.toLocal()}'),
+                  trailing: Text(
+                    '${payment.jumlah}',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
