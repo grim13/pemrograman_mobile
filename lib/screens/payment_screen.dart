@@ -4,7 +4,6 @@ import 'package:pemrograman_mobile/models/payment_model.dart';
 class PaymentScreen extends StatefulWidget {
   PaymentScreen({super.key});
   static String routeName = '/payment';
-
   List<PaymentModel> paymentList = [
     PaymentModel(
       id: 1,
@@ -24,14 +23,7 @@ class PaymentScreen extends StatefulWidget {
       tanggal: DateTime.parse("2023-10-01"),
       jumlah: 200000,
     ),
-    PaymentModel(
-      id: 4,
-      nama: 'Koran Pagi 2',
-      tanggal: DateTime.parse("2023-10-03"),
-      jumlah: 800000,
-    ),
   ];
-
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
@@ -60,6 +52,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          widget.paymentList.add(
+            PaymentModel(
+              id: widget.paymentList.length + 1,
+              nama: 'Item Baru dengan id ${widget.paymentList.length + 1}',
+              tanggal: DateTime.now(),
+              jumlah: 500000,
+            ),
+          );
+          print(widget.paymentList.length);
+          setState(() {}); // Refresh the UI
+        },
       ),
     );
   }
