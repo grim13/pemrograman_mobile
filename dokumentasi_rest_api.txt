@@ -1,0 +1,27 @@
+create data
+method: POST
+url: https://crudcrud.com/api/6dda15298b294cb9b46d6e9d3218044f/payment
+payload:
+  nama : "nama pembayaran"
+  tanggal : "2023-10-01"
+  total : 100000
+
+get all data
+method: GET
+url: https://crudcrud.com/api/6dda15298b294cb9b46d6e9d3218044f/payment
+
+get data by id
+method: GET
+url: https://crudcrud.com/api/6dda15298b294cb9b46d6e9d3218044f/payment/{id_payment}
+
+update data
+method: PUT
+url: https://crudcrud.com/api/6dda15298b294cb9b46d6e9d3218044f/payment/{id_payment}
+payload:
+  nama : "nama pembayaran"
+  tanggal : "2023-10-01"
+  total : 100000
+
+delete data
+method: DELETE
+url: https://crudcrud.com/api/6dda15298b294cb9b46d6e9d3218044f/payment/{id_payment}
