@@ -31,7 +31,10 @@ class PaymentAddSceen extends StatelessWidget {
               content: const Text('Data Behasil Disimpan'),
               actions: <Widget>[
                 TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
+                  onPressed: () {
+                    Navigator.pop(context, 'OK');
+                    Navigator.pop(context, 'OK');
+                  },
                   child: const Text('OK'),
                 ),
               ],
