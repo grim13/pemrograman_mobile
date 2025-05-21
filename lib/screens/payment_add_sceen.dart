@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pemrograman_mobile/screens/payment_screen.dart';
 import 'package:pemrograman_mobile/services/request.dart';
 
 class PaymentAddSceen extends StatelessWidget {
@@ -22,6 +21,7 @@ class PaymentAddSceen extends StatelessWidget {
         'tanggal': tanggalPembayaran,
       },
     );
+    print(res.statusCode);
     if (res.statusCode == 201) {
       showDialog<String>(
         context: context,
@@ -31,11 +31,7 @@ class PaymentAddSceen extends StatelessWidget {
               content: const Text('Data Behasil Disimpan'),
               actions: <Widget>[
                 TextButton(
-                  onPressed:
-                      () => Navigator.popAndPushNamed(
-                        context,
-                        PaymentScreen.routeName,
-                      ),
+                  onPressed: () => Navigator.pop(context, 'OK'),
                   child: const Text('OK'),
                 ),
               ],

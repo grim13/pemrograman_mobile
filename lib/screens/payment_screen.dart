@@ -71,7 +71,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.pushNamed(context, '/payment/add');
+          Navigator.pushNamed(context, '/payment/add').then((_) {
+            // Refresh the payment data after returning from the add screen
+            loadPaymentData();
+          });
           // Refresh the UI
         },
       ),
