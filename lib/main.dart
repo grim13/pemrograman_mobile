@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pemrograman_mobile/screens/home_screen.dart';
+import 'package:pemrograman_mobile/screens/payment_add_sceen.dart';
 import 'package:pemrograman_mobile/screens/payment_screen.dart';
 import 'package:pemrograman_mobile/screens/profile_screen.dart';
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (ctx) => HomeScreen(),
         PaymentScreen.routeName: (ctx) => PaymentScreen(),
         ProfileScreen.routeName: (ctx) => ProfileScreen(),
+        PaymentAddSceen.routeName: (ctx) => PaymentAddSceen(),
       },
     );
   }

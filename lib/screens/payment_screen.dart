@@ -1,34 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:pemrograman_mobile/models/payment_model.dart';
+import 'package:pemrograman_mobile/services/request.dart';
+import 'dart:convert' as convert;
 
 class PaymentScreen extends StatefulWidget {
   PaymentScreen({super.key});
   static String routeName = '/payment';
-  List<PaymentModel> paymentList = [
-    PaymentModel(
-      id: 1,
-      nama: 'Buku Pemrograman Mobile',
-      tanggal: DateTime.parse("2023-10-01"),
-      jumlah: 100000,
-    ),
-    PaymentModel(
-      id: 2,
-      nama: 'Majalah Teknologi',
-      tanggal: DateTime.parse("2023-10-01"),
-      jumlah: 200000,
-    ),
-    PaymentModel(
-      id: 3,
-      nama: 'Koran Pagi',
-      tanggal: DateTime.parse("2023-10-01"),
-      jumlah: 200000,
-    ),
-  ];
+  List<PaymentModel> paymentList = [];
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
+  @override
+  Future<void> loadPaymentData() async {
+    //load payment data from API
+    var req = ReqService();
+    var reqPayment = await req.get('/payment');
+    if (reqPayment.statusCode == 200) {
+      widget.paymentList.clear();
+      var data = convert.jsonDecode(reqPayment.body);
+      for (var item in data) {
+        widget.paymentList.add(
+          PaymentModel(
+            nama: item['nama'].toString(),
+            tanggal: item['tanggal'],
+            jumlah: int.parse(item['jumlah'].toString()),
+            id: item['_id'],
+          ),
+        );
+      }
+      setState(() {
+        widget.paymentList = widget.paymentList;
+      });
+    } else {
+      print('Failed to load payment data');
+    }
+  }
+
+  void initState() {
+    super.initState();
+    loadPaymentData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +56,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 final payment = widget.paymentList[index];
                 return ListTile(
                   title: Text(payment.nama),
-                  subtitle: Text('Tanggal: ${payment.tanggal.toLocal()}'),
+                  subtitle: Text('Tanggal: ${payment.tanggal}'),
                   trailing: Text(
                     '${payment.jumlah}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
@@ -57,16 +71,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
         onPressed: () {
-          widget.paymentList.add(
-            PaymentModel(
-              id: widget.paymentList.length + 1,
-              nama: 'Item Baru dengan id ${widget.paymentList.length + 1}',
-              tanggal: DateTime.now(),
-              jumlah: 500000,
-            ),
-          );
-          print(widget.paymentList.length);
-          setState(() {}); // Refresh the UI
+          Navigator.pushNamed(context, '/payment/add');
+          // Refresh the UI
         },
       ),
     );

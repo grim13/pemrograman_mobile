@@ -1,7 +1,7 @@
 class PaymentModel {
-  int? id; //nullable
+  String? id; //nullable
   String nama;
-  DateTime tanggal;
+  String tanggal;
   int jumlah;
   //membuat constructor method
   PaymentModel({
