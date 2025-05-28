@@ -28,7 +28,7 @@ class AuthService {
     return false;
   }
 
-  Future<Map<String, dynamic>?> getProfile() async {
+  Future<dynamic> getProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     if (token == null) return null;

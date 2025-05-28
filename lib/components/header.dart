@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({super.key});
+  dynamic? _loginInfo;
+  HeaderWidget(dynamic? loginInfo, {super.key}) : _loginInfo = loginInfo;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +19,15 @@ class HeaderWidget extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Text("Selamat Datang di App", style: TextStyle(fontSize: 30)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Selamat Datang di App", style: TextStyle(fontSize: 30)),
+            SizedBox(height: 3),
+            Text(_loginInfo?['firstName'], style: TextStyle(fontSize: 30)),
+          ],
+        ),
       ),
     );
   }
