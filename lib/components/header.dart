@@ -28,7 +28,7 @@ class HeaderWidget extends StatelessWidget {
             Text(
               _loginInfo != null && _loginInfo['firstName'] != null
                   ? _loginInfo['firstName']
-                  : '',
+                  : 'Loading...',
               style: TextStyle(fontSize: 30),
             ),
           ],
