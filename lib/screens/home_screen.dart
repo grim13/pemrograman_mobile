@@ -22,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadProfile() async {
     _loginInfo = await AuthService().getProfile();
-    print(_loginInfo?['firstName']);
     setState(() {});
     // Initialize any necessary data or state here
   }

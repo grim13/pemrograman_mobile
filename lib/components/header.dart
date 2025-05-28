@@ -25,7 +25,12 @@ class HeaderWidget extends StatelessWidget {
           children: [
             Text("Selamat Datang di App", style: TextStyle(fontSize: 30)),
             SizedBox(height: 3),
-            Text(_loginInfo?['firstName'], style: TextStyle(fontSize: 30)),
+            Text(
+              _loginInfo != null && _loginInfo['firstName'] != null
+                  ? _loginInfo['firstName']
+                  : '',
+              style: TextStyle(fontSize: 30),
+            ),
           ],
         ),
       ),
