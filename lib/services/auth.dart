@@ -33,7 +33,7 @@ class AuthService {
     String? token = prefs.getString('token');
     if (token == null) return null;
     var res = await http.get(
-      Uri.parse(api + '/auth/me'),
+      Uri.parse("$api/auth/me"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',

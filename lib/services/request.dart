@@ -3,7 +3,7 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 class ReqService {
-  String api = 'https://crudcrud.com/api/6dda15298b294cb9b46d6e9d3218044f';
+  String api = 'https://crudcrud.com/api/87ab225cee2a4d21a25e493527239b5c';
 
   Future<http.Response> get(String _url) async {
     var res = await http.get(
